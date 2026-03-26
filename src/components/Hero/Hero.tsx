@@ -33,7 +33,7 @@ export default function Hero({ isVisible }: HeroProps) {
           </h1>
           <p className={styles.nameEn}>{mia.nameEn}</p>
           <div className={styles.line} />
-          <p className={styles.breed}>Dilute Calico</p>
+          <p className={styles.breed}>Minuet</p>
         </div>
       </div>
     </section>
