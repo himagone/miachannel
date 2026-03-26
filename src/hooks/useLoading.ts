@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useLoading(minDuration = 3000): boolean {
+export function useLoading(minDuration = 1800): boolean {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), minDuration);

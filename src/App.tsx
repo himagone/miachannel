@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useLoading } from './hooks/useLoading';
 import Loading from './components/Loading/Loading';
 import Header from './components/Header/Header';
@@ -8,28 +7,28 @@ import Profile from './components/Profile/Profile';
 import Gallery from './components/Gallery/Gallery';
 import Traits from './components/Traits/Traits';
 import Footer from './components/Footer/Footer';
+import styles from './App.module.css';
 
 function App() {
-  const isLoaded = useLoading(3000);
-  const [showLoading, setShowLoading] = useState(true);
+  const isLoaded = useLoading(1800);
 
   return (
-    <>
-      {showLoading && (
-        <Loading isLoaded={isLoaded} onExitComplete={() => setShowLoading(false)} />
-      )}
-      <Header />
-      <main>
-        <Hero isVisible={isLoaded} />
-        <Divider />
-        <Profile />
-        <Divider />
-        <Gallery />
-        <Divider />
-        <Traits />
-      </main>
-      <Footer />
-    </>
+    <div className={styles.stage} data-playing={isLoaded || undefined}>
+      <Loading className={styles.loading} />
+      <div className={styles.content}>
+        <Header />
+        <main>
+          <Hero isVisible={isLoaded} />
+          <Divider />
+          <Profile />
+          <Divider />
+          <Gallery />
+          <Divider />
+          <Traits />
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }
 

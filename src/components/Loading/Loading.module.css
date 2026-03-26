@@ -1,46 +1,67 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-dark);
 }
 
-.content {
+.logoWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  z-index: 1;
+  gap: 1.5rem;
 }
 
 .pawLogo {
-  color: var(--color-nose-pink);
+  width: 80px;
+  height: 80px;
 }
+
+.nameText {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--color-cream);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.85s forwards;
+}
+
+/* --- ストロークアニメーション --- */
 
 .pawPad0,
 .pawPad1,
 .pawPad2,
 .pawPad3,
 .pawPad4 {
+  fill: none;
+  stroke: var(--color-rose);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-dasharray: 200;
   stroke-dashoffset: 200;
+  animation: drawStroke 0.6s ease-out forwards;
 }
 
-.nameText {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--color-text-primary);
+.pawPad1 { animation-delay: 0s; }
+.pawPad2 { animation-delay: 0.1s; }
+.pawPad3 { animation-delay: 0.15s; }
+.pawPad4 { animation-delay: 0.2s; }
+.pawPad0 { animation-delay: 0.3s; }
+
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
-.colorOverlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+/* --- テキスト フェードイン --- */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
-
-/* ANIMATION: 人間が書く */

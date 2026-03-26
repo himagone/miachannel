@@ -1,0 +1,42 @@
+.stage {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+}
+
+.content {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background-color: var(--color-bg-primary);
+  clip-path: circle(0% at 50% 50%);
+  will-change: clip-path;
+  overflow-y: auto;
+}
+
+.stage[data-playing] .content {
+  animation: circleExpand 7s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
+}
+
+.stage[data-playing] .loading {
+  animation: hideLoading 0s linear 8.8s forwards;
+}
+
+@keyframes hideLoading {
+  to {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@keyframes circleExpand {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  99.9% {
+    clip-path: circle(100% at 50% 50%);
+  }
+  100% {
+    clip-path: none;
+  }
+}

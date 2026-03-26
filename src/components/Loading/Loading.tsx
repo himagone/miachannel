@@ -1,108 +1,42 @@
-import { useRef, useEffect } from 'react';
 import styles from './Loading.module.css';
 
 interface LoadingProps {
-  isLoaded: boolean;
-  onExitComplete: () => void;
+  className?: string;
 }
 
-export default function Loading({ isLoaded, onExitComplete }: LoadingProps) {
-  const state = isLoaded ? 'exit' : 'active';
-  const overlayRef = useRef<HTMLDivElement>(null);
-
-  // アニメーション未定義時のフォールバック:
-  // exit 状態になった時点でCSSアニメーションが設定されていなければ即座に完了扱い
-  useEffect(() => {
-    if (state !== 'exit') return;
-    const el = overlayRef.current;
-    if (!el) return;
-    const style = getComputedStyle(el);
-    const hasAnimation = style.animationName !== 'none' && style.animationName !== '';
-    if (!hasAnimation) {
-      onExitComplete();
-    }
-  }, [state, onExitComplete]);
-
-  const handleAnimationEnd = () => {
-    if (state === 'exit') {
-      onExitComplete();
-    }
-  };
-
+export default function Loading({ className }: LoadingProps) {
   return (
-    <div
-      ref={overlayRef}
-      className={styles.overlay}
-      data-state={state}
-      onAnimationEnd={handleAnimationEnd}
-    >
-      <div className={styles.content}>
+    <div className={`${styles.overlay}${className ? ` ${className}` : ''}`}>
+      <div className={styles.logoWrap}>
         <svg
           className={styles.pawLogo}
           viewBox="0 0 100 100"
-          width="80"
-          height="80"
-          aria-hidden="true"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {/* メインパッド */}
-          <ellipse
-            className={styles.pawPad0}
-            cx="50"
-            cy="65"
-            rx="22"
-            ry="18"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          {/* 左上の指パッド */}
-          <ellipse
-            className={styles.pawPad1}
-            cx="22"
-            cy="38"
-            rx="10"
-            ry="13"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          {/* 中央上の指パッド */}
-          <ellipse
-            className={styles.pawPad2}
-            cx="40"
-            cy="26"
-            rx="9"
-            ry="12"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          {/* 中央右の指パッド */}
-          <ellipse
-            className={styles.pawPad3}
-            cx="60"
-            cy="26"
-            rx="9"
-            ry="12"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          {/* 右上の指パッド */}
+          {/* 小さい楕円 × 4 */}
+          <ellipse className={styles.pawPad1} cx="30" cy="25" rx="10" ry="12" />
+          <ellipse className={styles.pawPad2} cx="50" cy="18" rx="9"  ry="11" />
+          <ellipse className={styles.pawPad3} cx="70" cy="25" rx="10" ry="12" />
           <ellipse
             className={styles.pawPad4}
-            cx="78"
-            cy="38"
-            rx="10"
-            ry="13"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+            cx="82" cy="45" rx="8" ry="10"
+            transform="rotate(20 82 45)"
+          />
+          {/* ハート型 */}
+          <path
+            className={styles.pawPad0}
+            d="M50 88
+              C50 88, 20 68, 20 55
+              C20 45, 28 38, 36 38
+              C42 38, 46 42, 50 47
+              C54 42, 58 38, 64 38
+              C72 38, 80 45, 80 55
+              C80 68, 50 88, 50 88Z"
           />
         </svg>
         <span className={styles.nameText}>MIA</span>
       </div>
-      <div className={styles.colorOverlay} />
     </div>
   );
 }
