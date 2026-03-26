@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+:root {
+  --color-rose: #F2BDD0;
+  --color-lavender: #B7A4BF;
+  --color-mint: #C1D9D4;
+  --color-cream: #F2E2DC;
+  --color-blush: #F2C4C4;
+  --color-calico-beige: #c6a98d;
+  --color-calico-brown: #896e51;
+  --color-nose-pink: #b57062;
+  --color-eye-green: #706b33;
+  --color-eye-green-light: #a8a465;
+  --color-text-primary: #3d3028;
+  --color-text-secondary: #7a6b5d;
+  --color-bg-primary: #FDFAF7;
+  --color-bg-section: #FFF5F0;
+  --color-bg-dark: #2d2520;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Zen Maru Gothic', sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

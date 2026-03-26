@@ -1,0 +1,46 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-primary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.pawLogo {
+  color: var(--color-nose-pink);
+}
+
+.pawPad0,
+.pawPad1,
+.pawPad2,
+.pawPad3,
+.pawPad4 {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+}
+
+.nameText {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+}
+
+.colorOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ANIMATION: 人間が書く */

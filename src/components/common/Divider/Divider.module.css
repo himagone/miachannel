@@ -1,0 +1,11 @@
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.paw {
+  color: var(--color-calico-beige);
+  opacity: 0.5;
+}
